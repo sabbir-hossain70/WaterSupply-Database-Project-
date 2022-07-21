@@ -1,15 +1,14 @@
-SET SERVEROUTPUT ON;
-CREATE OR REPLACE PROCEDURE showmax IS
-mx_order_id orders.order_id%rowtype;
-
+CREATE OR REPLACE PROCEDURE max_value IS
+mx orders.order_id%type;
 BEGIN
-SELECT MAX(order_id) into mx_order_idFROM orders;
-DBMS_OUTPUT.PUT_LINE('max order id= '||mx_order_id);
+SELECT MAX(order_id) INTO mx
+FROM orders;
+dbms_output.put_line('max value: ' || mx);
 END;
 /
-SHOW ERRORS;
 
+SET SERVEROUTPUT ON
 BEGIN
-getemp;
+max_value;
 END;
 /
